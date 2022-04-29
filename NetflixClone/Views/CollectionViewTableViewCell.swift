@@ -3,9 +3,8 @@ import UIKit
 class CollectionViewTableViewCell: UITableViewCell {
     
     static let identifier = "CollectionViewTableViewCell"
-    
     private var movieData: [Result] = []
-    private var trendingTv: [TrengingTvResult] = []
+   
     
     private lazy var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
@@ -34,10 +33,9 @@ class CollectionViewTableViewCell: UITableViewCell {
     //MARK: Public funcs
     public func configure(with movieData: [Result]){
         self.movieData = movieData
-    }
-    
-    public func configure(with trendingTv: [TrengingTvResult]){
-        self.trendingTv = trendingTv
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     //MARK: Private funcs
@@ -53,15 +51,14 @@ class CollectionViewTableViewCell: UITableViewCell {
 extension CollectionViewTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return movieData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleCollectionViewCell.identifier, for: indexPath) as? TitleCollectionViewCell else { return  UICollectionViewCell() }
-        cell.configure(with: "")
+        cell.configure(with: movieData[indexPath.row].posterPath ?? "placeholder")
         return cell
     }
-    
     
 }
 

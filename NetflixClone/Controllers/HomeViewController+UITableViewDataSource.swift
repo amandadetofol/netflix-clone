@@ -29,20 +29,8 @@ extension HomeViewController: UITableViewDataSource {
             
             break
             
-        case Sections.TrendingTv.rawValue:
-            homeViewModel.apiCaller.getTrendingTvItems { data, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                
-                guard let data = data?.results else { return }
-                cell.configure(with: data)
-            }
-            break
-            
         case Sections.Popular.rawValue:
-            homeViewModel.apiCaller.getItems(items: Constants.POPULAR) { data, error in
+            homeViewModel.apiCaller.getItems(items: Constants.MOVIES) { data, error in
                 if let error = error {
                     print(error.localizedDescription)
                     return

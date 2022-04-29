@@ -1,9 +1,9 @@
 import Foundation
 
 struct MovieData: Codable {
-    let page: Int?
-    let results: [Result]?
-    let totalPages, totalResults: Int?
+    let page: Int
+    let results: [Result]
+    let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
         case page, results
@@ -12,51 +12,46 @@ struct MovieData: Codable {
     }
 }
 
+// MARK: - Result
 struct Result: Codable {
-    let voteAverage: Double?
-    let overview, releaseDate: String?
-    let adult: Bool?
-    let backdropPath: String?
-    let voteCount: Int?
-    let genreIDS: [Int]?
-    let id: Int?
-    let originalLanguage: OriginalLanguage?
-    let originalTitle, posterPath, title: String?
+    let backdropPath: String
+    let genreIDS: [Int]
+    let originalLanguage: String
+    let originalTitle: String?
+    let posterPath: String
     let video: Bool?
-    let popularity: Double?
-    let mediaType: MediaType?
-    let originalName: String?
+    let voteAverage: Double
+    let voteCount: Int
+    let overview: String
+    let releaseDate, title: String?
+    let id: Int
+    let adult: Bool?
+    let popularity: Double
+    let mediaType: MediaType
+    let name, firstAirDate, originalName: String?
     let originCountry: [String]?
-    let firstAirDate, name: String?
 
     enum CodingKeys: String, CodingKey {
-        case voteAverage = "vote_average"
-        case overview
-        case releaseDate = "release_date"
-        case adult
         case backdropPath = "backdrop_path"
-        case voteCount = "vote_count"
         case genreIDS = "genre_ids"
-        case id
         case originalLanguage = "original_language"
         case originalTitle = "original_title"
         case posterPath = "poster_path"
-        case title, video, popularity
+        case video
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
+        case overview
+        case releaseDate = "release_date"
+        case title, id, adult, popularity
         case mediaType = "media_type"
+        case name
+        case firstAirDate = "first_air_date"
         case originalName = "original_name"
         case originCountry = "origin_country"
-        case firstAirDate = "first_air_date"
-        case name
     }
 }
 
 enum MediaType: String, Codable {
     case movie = "movie"
     case tv = "tv"
-}
-
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case it = "it"
-    case pl = "pl"
 }
