@@ -17,23 +17,68 @@ extension HomeViewController: UITableViewDataSource {
         switch indexPath.section {
         
         case Sections.TrendingMovies.rawValue:
-            homeViewModel.getTrendingMovies()
+            homeViewModel.apiCaller.getItems(items: Constants.MOVIES) { data, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                guard let data = data?.results else { return }
+                cell.configure(with: data)
+            }
+            
             break
             
         case Sections.TrendingTv.rawValue:
-            homeViewModel.getTrendingTV()
+            homeViewModel.apiCaller.getTrendingTvItems { data, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                guard let data = data?.results else { return }
+                cell.configure(with: data)
+            }
             break
             
         case Sections.Popular.rawValue:
-            homeViewModel.getPopulars()
+            homeViewModel.apiCaller.getItems(items: Constants.POPULAR) { data, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                guard let data = data?.results else { return }
+                cell.configure(with: data)
+            }
+            
+            
             break
             
         case Sections.Upcoming.rawValue:
-            homeViewModel.getUpcomingMovies()
+            homeViewModel.apiCaller.getItems(items: Constants.UPCOMING) { data, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                guard let data = data?.results else { return }
+                cell.configure(with: data)
+            }
+            
             break
             
         case Sections.topRated.rawValue:
-            homeViewModel.getTopRatedMovies()
+            homeViewModel.apiCaller.getItems(items: Constants.TOP_RATED) { data, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                guard let data = data?.results else { return }
+                cell.configure(with: data)
+            }
+            
             break
         default:
             break

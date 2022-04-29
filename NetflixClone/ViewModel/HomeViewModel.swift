@@ -3,14 +3,18 @@ import Foundation
 
 class HomeViewModel {
     
-    private let apiCaller: ApiCaller = ApiCaller()
+    let apiCaller: ApiCaller = ApiCaller()
     let sectionTitles: [String] = ["Trending Movies","Popular","Trending TV","Upcoming Movies","Top rated"]
 
     
     //Retorna filmes com a melhor classificacao
-    func getTopRatedMovies(){
+    func getTopRatedMovies() {
         apiCaller.getItems(items: Constants.TOP_RATED) { data, error in
-            print(data)
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+           
         }
     }
     

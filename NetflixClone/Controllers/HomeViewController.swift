@@ -25,7 +25,6 @@ class HomeViewController: UIViewController {
     let homeViewModel: HomeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
-        homeViewModel.getTopRatedMovies()
         super.viewDidLoad()
         self.setupHomeFeedTable()
         self.configureNavigationBar()
