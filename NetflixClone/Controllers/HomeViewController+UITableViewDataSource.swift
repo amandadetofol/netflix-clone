@@ -22,11 +22,9 @@ extension HomeViewController: UITableViewDataSource {
                     print(error.localizedDescription)
                     return
                 }
-                
                 guard let data = data?.results else { return }
                 cell.configure(with: data)
             }
-            
             break
             
         case Sections.Popular.rawValue:
@@ -35,12 +33,9 @@ extension HomeViewController: UITableViewDataSource {
                     print(error.localizedDescription)
                     return
                 }
-                
                 guard let data = data?.results else { return }
                 cell.configure(with: data)
             }
-            
-            
             break
             
         case Sections.Upcoming.rawValue:
@@ -49,11 +44,9 @@ extension HomeViewController: UITableViewDataSource {
                     print(error.localizedDescription)
                     return
                 }
-                
                 guard let data = data?.results else { return }
                 cell.configure(with: data)
             }
-            
             break
             
         case Sections.topRated.rawValue:
@@ -62,7 +55,6 @@ extension HomeViewController: UITableViewDataSource {
                     print(error.localizedDescription)
                     return
                 }
-                
                 guard let data = data?.results else { return }
                 cell.configure(with: data)
             }
@@ -71,8 +63,6 @@ extension HomeViewController: UITableViewDataSource {
         default:
             break
         }
-        
-        
         return cell 
     }
     
