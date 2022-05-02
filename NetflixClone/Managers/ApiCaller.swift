@@ -30,13 +30,13 @@ class ApiCaller {
         }.resume()
     }
     
-    func getDiscoverMovies(completion:  @escaping(MovieData?, Error?) -> Void){
+    func getDiscoverMovies(completion:  @escaping(SearchModel?, Error?) -> Void){
         guard let url = URL(string: "\(Constants.DISCOVER)") else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else  { return }
             do {
                 let decoder = JSONDecoder()
-                let gitData = try decoder.decode(MovieData.self, from: data)
+                let gitData = try decoder.decode(SearchModel.self, from: data)
                 completion(gitData, nil)
             } catch let err {
                 print(err.localizedDescription)

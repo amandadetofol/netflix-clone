@@ -9,6 +9,7 @@ class HeroHeaderUIView: UIView {
 
     private let imageView: UIImageView = {
         let image = UIImageView()
+        image.image = UIImage(named: "placeholder")
         image.backgroundColor = .systemCyan
         image.contentMode = .scaleToFill
         image.translatesAutoresizingMaskIntoConstraints = false

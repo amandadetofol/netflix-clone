@@ -2,7 +2,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    var movieData: [Result]?
+    var movieData: [SearchResult]?
     
     private lazy var searchResults: UITableView = {
         let tableView = UITableView()
@@ -10,6 +10,13 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
+    }()
+    
+    private let searchBarController: UISearchController = {
+        let searchBarController = UISearchController(searchResultsController: SearchResultsViewController())
+        searchBarController.searchBar.placeholder = "Search for a movie or a TVShow"
+        searchBarController.searchBar.searchBarStyle = .minimal
+        return searchBarController
     }()
 
     override func viewDidLoad() {
@@ -30,6 +37,8 @@ class SearchViewController: UIViewController {
         self.title = "Search"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.searchController = searchBarController
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     private func setupView() {
@@ -47,30 +56,6 @@ class SearchViewController: UIViewController {
                 self.searchResults.reloadData()
             }
         }
-    }
-    
-}
-
-extension SearchViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.movieData?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: UpcomingTableViewCell.identifier, for: indexPath) as? UpcomingTableViewCell else { return UITableViewCell() }
-        cell.title = self.movieData?[indexPath.row].originalTitle ?? "Unknown"
-        cell.posterSinopse = self.movieData?[indexPath.row].overview ?? "This upcoming has no overview"
-        cell.poster = self.movieData?[indexPath.row].posterPath ?? ""
-        return cell
-    }
-    
-}
-
-extension SearchViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
     }
     
 }
