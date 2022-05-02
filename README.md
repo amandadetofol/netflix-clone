@@ -10,4 +10,6 @@
 
 ## Architecture
 🇧🇷 Estou utilizando a arquitetura MVVM (Model - View - ViewModel).
+
+
 🇺🇸 Currently usign MVVM (Model - View - ViewModel) Architecture.
