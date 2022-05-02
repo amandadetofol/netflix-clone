@@ -27,6 +27,7 @@
 		6E9DF6242819B03A007BED7A /* HomeViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9DF6232819B03A007BED7A /* HomeViewController+UITableViewDataSource.swift */; };
 		6E9DF62B2819B31E007BED7A /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9DF62A2819B31E007BED7A /* CollectionViewTableViewCell.swift */; };
 		6E9DF62D2819C2FF007BED7A /* HeroHeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9DF62C2819C2FF007BED7A /* HeroHeaderUIView.swift */; };
+		A64D3BA8281F571500491F4D /* UpcomingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64D3BA7281F571500491F4D /* UpcomingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		6E9DF6232819B03A007BED7A /* HomeViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		6E9DF62A2819B31E007BED7A /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
 		6E9DF62C2819C2FF007BED7A /* HeroHeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroHeaderUIView.swift; sourceTree = "<group>"; };
+		A64D3BA7281F571500491F4D /* UpcomingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				6E9DF62A2819B31E007BED7A /* CollectionViewTableViewCell.swift */,
 				6E9DF62C2819C2FF007BED7A /* HeroHeaderUIView.swift */,
 				6E892553281B01270023A1F7 /* TitleCollectionViewCell.swift */,
+				A64D3BA7281F571500491F4D /* UpcomingTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				6E89254C281AC0170023A1F7 /* ApiCaller.swift in Sources */,
 				6E9DF61E2819AADD007BED7A /* SearchViewController.swift in Sources */,
 				6E9DF6092819A83D007BED7A /* MainTabBarViewController.swift in Sources */,
+				A64D3BA8281F571500491F4D /* UpcomingTableViewCell.swift in Sources */,
 				6E892554281B01270023A1F7 /* TitleCollectionViewCell.swift in Sources */,
 				6E9DF6202819AB02007BED7A /* DownloadsViewController.swift in Sources */,
 				6E9DF6242819B03A007BED7A /* HomeViewController+UITableViewDataSource.swift in Sources */,

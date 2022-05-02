@@ -6,7 +6,7 @@ class UpcomingViewController: UIViewController {
     
     private lazy var upcomingTable: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UpcomingTableViewCell.self, forCellReuseIdentifier: UpcomingTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
@@ -51,7 +51,9 @@ class UpcomingViewController: UIViewController {
 }
 
 extension UpcomingViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
 }
 
 extension UpcomingViewController: UITableViewDataSource {
@@ -61,8 +63,10 @@ extension UpcomingViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = movieData?[indexPath.row].originalTitle ?? "Unknown"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: UpcomingTableViewCell.identifier, for: indexPath) as? UpcomingTableViewCell else { return UITableViewCell() }
+        cell.title = self.movieData?[indexPath.row].originalTitle ?? "Unknown"
+        cell.posterSinopse = self.movieData?[indexPath.row].overview ?? "This upcoming has no overview"
+        cell.poster = self.movieData?[indexPath.row].posterPath ?? ""
         return cell 
     }
     
