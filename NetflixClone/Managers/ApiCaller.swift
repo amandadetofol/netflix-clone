@@ -44,4 +44,21 @@ class ApiCaller {
             }
         }.resume()
     }
+    
+    func searchFor(movie: String, completion:  @escaping(SearchModel?, Error?) -> Void) {
+        guard let movie = movie.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+        
+        guard let url = URL(string: "\(Constants.BASE_URL)3/search/movie?api_key=\(Constants.API_KEY)&query=\(movie)" ) else { return }
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else  { return }
+            do {
+                let decoder = JSONDecoder()
+                let gitData = try decoder.decode(SearchModel.self, from: data)
+                completion(gitData, nil)
+            } catch let err {
+                print(err.localizedDescription)
+                completion(nil, err)
+            }
+        }.resume()
+    }
 }

@@ -11,10 +11,11 @@ class SearchResultsViewController: UIViewController {
     
     var data: [SearchResult] = []
     
-    private lazy var searchResultsCollectionView: UICollectionView = {
+    lazy var searchResultsCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .vertical
         collectionViewLayout.itemSize = CGSize(width: 100, height: 200)
+        collectionViewLayout.minimumInteritemSpacing = 10
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.register(TitleCollectionViewCell.self, forCellWithReuseIdentifier: TitleCollectionViewCell.identifier)

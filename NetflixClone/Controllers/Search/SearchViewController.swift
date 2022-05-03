@@ -4,7 +4,7 @@ class SearchViewController: UIViewController {
 
     var movieData: [SearchResult]?
     
-    private lazy var searchResults: UITableView = {
+     lazy var searchResults: UITableView = {
         let tableView = UITableView()
         tableView.register(UpcomingTableViewCell.self, forCellReuseIdentifier: UpcomingTableViewCell.identifier)
         tableView.delegate = self
@@ -38,6 +38,7 @@ class SearchViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.searchController = searchBarController
+        self.searchBarController.searchResultsUpdater = self
         self.navigationController?.navigationBar.tintColor = .white
     }
     
@@ -56,6 +57,35 @@ class SearchViewController: UIViewController {
                 self.searchResults.reloadData()
             }
         }
+    }
+    
+}
+
+extension SearchViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let query = searchController.searchBar.text,
+              !query.trimmingCharacters(in: .whitespaces).isEmpty,
+              query.trimmingCharacters(in: .whitespaces).count >= 3,
+        let resultsController = searchController.searchResultsController as? SearchResultsViewController else {
+            return
+        }
+        
+        ApiCaller().searchFor(movie: query) { result, error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+            DispatchQueue.main.async {
+                guard let result = result else {
+                    return
+                }
+                resultsController.data = result.results
+                resultsController.searchResultsCollectionView.reloadData()
+            }
+            
+        }
+        
     }
     
 }
