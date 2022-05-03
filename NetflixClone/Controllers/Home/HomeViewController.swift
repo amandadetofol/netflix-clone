@@ -9,7 +9,9 @@ enum Sections: Int {
 
 class HomeViewController: UIViewController {
     
-    private lazy var homeFeedTable: UITableView = {
+    lazy var viewModel: HomeViewModel = HomeViewModel(api: ApiCaller(), viewController: self)
+    
+    lazy var homeFeedTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.separatorStyle = .none
         table.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
@@ -20,8 +22,6 @@ class HomeViewController: UIViewController {
         table.tableHeaderView = heroHeaderView
         return table
     }()
-    
-    let homeViewModel: HomeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

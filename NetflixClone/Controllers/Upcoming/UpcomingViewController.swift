@@ -6,9 +6,9 @@ struct UrlOpen{
 
 class UpcomingViewController: UIViewController {
     
-    var movieData: [Result]?
+    lazy var viewModel: UpcomingViewModel = UpcomingViewModel(api: ApiCaller(), viewController: self)
     
-    private lazy var upcomingTable: UITableView = {
+    lazy var upcomingTable: UITableView = {
         let tableView = UITableView()
         tableView.register(UpcomingTableViewCell.self, forCellReuseIdentifier: UpcomingTableViewCell.identifier)
         tableView.delegate = self
@@ -17,7 +17,7 @@ class UpcomingViewController: UIViewController {
     }()
 
     override func viewDidLoad() {
-        fetchUpcoming()
+        viewModel.fetchUpcoming()
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         self.setupNavigationController()
@@ -40,16 +40,5 @@ class UpcomingViewController: UIViewController {
         self.view.addSubview(upcomingTable)
     }
     
-    private func fetchUpcoming() {
-        ApiCaller().getItems(items: Constants.UPCOMING) { [weak self] data, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            self?.movieData = data?.results.sorted{ $0.originalTitle ?? "" > $1.originalTitle ?? "" }
-            DispatchQueue.main.async {
-                self?.upcomingTable.reloadData()
-            }
-        }
-    }
 }
 

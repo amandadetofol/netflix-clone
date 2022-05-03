@@ -40,6 +40,4 @@ class SearchResultsViewController: UIViewController {
         self.view.backgroundColor = .black
     }
     
-    private func search(){}
-    
 }

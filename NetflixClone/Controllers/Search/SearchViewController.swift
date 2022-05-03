@@ -2,7 +2,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    var movieData: [SearchResult]?
+     lazy var viewModel: SearchViewModel = SearchViewModel(api: ApiCaller(), viewController: self)
     
      lazy var searchResults: UITableView = {
         let tableView = UITableView()
@@ -20,7 +20,7 @@ class SearchViewController: UIViewController {
     }()
 
     override func viewDidLoad() {
-        getDiscoverMovies()
+        viewModel.getDiscoverMovies()
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         self.setupNavigationController()
@@ -45,20 +45,6 @@ class SearchViewController: UIViewController {
     private func setupView() {
         self.view.addSubview(searchResults)
     }
-    
-    private func getDiscoverMovies(){
-        ApiCaller().getDiscoverMovies { data, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            
-            self.movieData = data?.results
-            DispatchQueue.main.async {
-                self.searchResults.reloadData()
-            }
-        }
-    }
-    
 }
 
 extension SearchViewController: UISearchResultsUpdating {
@@ -70,22 +56,7 @@ extension SearchViewController: UISearchResultsUpdating {
         let resultsController = searchController.searchResultsController as? SearchResultsViewController else {
             return
         }
-        
-        ApiCaller().searchFor(movie: query) { result, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            
-            DispatchQueue.main.async {
-                guard let result = result else {
-                    return
-                }
-                resultsController.data = result.results
-                resultsController.searchResultsCollectionView.reloadData()
-            }
-            
-        }
-        
+        viewModel.searchForMovie(movie: query, resultsController: resultsController)
     }
     
 }

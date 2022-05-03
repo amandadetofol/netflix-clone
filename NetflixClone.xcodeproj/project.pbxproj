@@ -36,6 +36,9 @@
 		A6AE5180282076EF00E58A07 /* SearchViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE517F282076EF00E58A07 /* SearchViewController+UITableViewDataSource.swift */; };
 		A6AE518428207EF300E58A07 /* SearchResultsViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE518328207EF300E58A07 /* SearchResultsViewController+UICollectionViewDelegate.swift */; };
 		A6AE518628207F1300E58A07 /* SearchResultsViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE518528207F1300E58A07 /* SearchResultsViewController+UICollectionViewDataSource.swift */; };
+		A6D7CBE42821EE71000B7030 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7CBE32821EE71000B7030 /* SearchViewModel.swift */; };
+		A6D7CBE62821EE80000B7030 /* DownloadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7CBE52821EE80000B7030 /* DownloadsViewModel.swift */; };
+		A6D7CBE82821EE8B000B7030 /* UpcomingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7CBE72821EE8B000B7030 /* UpcomingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,9 @@
 		A6AE517F282076EF00E58A07 /* SearchViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		A6AE518328207EF300E58A07 /* SearchResultsViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchResultsViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		A6AE518528207F1300E58A07 /* SearchResultsViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchResultsViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
+		A6D7CBE32821EE71000B7030 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		A6D7CBE52821EE80000B7030 /* DownloadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewModel.swift; sourceTree = "<group>"; };
+		A6D7CBE72821EE8B000B7030 /* UpcomingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +151,9 @@
 			isa = PBXGroup;
 			children = (
 				6E892549281AB8ED0023A1F7 /* HomeViewModel.swift */,
+				A6D7CBE32821EE71000B7030 /* SearchViewModel.swift */,
+				A6D7CBE72821EE8B000B7030 /* UpcomingViewModel.swift */,
+				A6D7CBE52821EE80000B7030 /* DownloadsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -299,8 +308,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6D7CBE82821EE8B000B7030 /* UpcomingViewModel.swift in Sources */,
 				6E9DF62B2819B31E007BED7A /* CollectionViewTableViewCell.swift in Sources */,
 				6E89254C281AC0170023A1F7 /* ApiCaller.swift in Sources */,
+				A6D7CBE62821EE80000B7030 /* DownloadsViewModel.swift in Sources */,
 				6E9DF61E2819AADD007BED7A /* SearchViewController.swift in Sources */,
 				A6AE51772820749A00E58A07 /* SearchModel.swift in Sources */,
 				6E9DF6092819A83D007BED7A /* MainTabBarViewController.swift in Sources */,
@@ -322,6 +333,7 @@
 				6E892550281ACFDA0023A1F7 /* String+Extension.swift in Sources */,
 				A6AE51792820764E00E58A07 /* SearchResultsViewController.swift in Sources */,
 				A6AE5180282076EF00E58A07 /* SearchViewController+UITableViewDataSource.swift in Sources */,
+				A6D7CBE42821EE71000B7030 /* SearchViewModel.swift in Sources */,
 				6E9DF61A2819AA73007BED7A /* HomeViewController.swift in Sources */,
 				A6AE518628207F1300E58A07 /* SearchResultsViewController+UICollectionViewDataSource.swift in Sources */,
 			);

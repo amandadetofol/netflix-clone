@@ -4,7 +4,7 @@ import UIKit
 extension HomeViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.homeViewModel.sectionTitles.count
+        return self.viewModel.sectionTitles.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -17,48 +17,27 @@ extension HomeViewController: UITableViewDataSource {
         switch indexPath.section {
         
         case Sections.TrendingMovies.rawValue:
-            homeViewModel.apiCaller.getItems(items: Constants.MOVIES) { data, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                guard let data = data?.results else { return }
-                cell.configure(with: data)
-            }
+            viewModel.getMovies()
+            guard let movies = viewModel.movies else { return UITableViewCell() }
+            cell.configure(with: movies)
             break
             
         case Sections.Popular.rawValue:
-            homeViewModel.apiCaller.getItems(items: Constants.MOVIES) { data, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                guard let data = data?.results else { return }
-                cell.configure(with: data)
-            }
+            viewModel.getMovies()
+            guard let movies = viewModel.movies else { return UITableViewCell() }
+            cell.configure(with: movies)
             break
             
         case Sections.Upcoming.rawValue:
-            homeViewModel.apiCaller.getItems(items: Constants.UPCOMING) { data, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                guard let data = data?.results else { return }
-                cell.configure(with: data)
-            }
+            viewModel.getUpcoming()
+            guard let movies = viewModel.upcoming else { return UITableViewCell() }
+            cell.configure(with: movies)
             break
             
         case Sections.topRated.rawValue:
-            homeViewModel.apiCaller.getItems(items: Constants.TOP_RATED) { data, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                guard let data = data?.results else { return }
-                cell.configure(with: data)
-            }
-            
+            viewModel.getTopRated()
+            guard let movies = viewModel.topRated else { return UITableViewCell() }
+            cell.configure(with: movies)
             break
         default:
             break
@@ -67,7 +46,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return homeViewModel.sectionTitles[section]
+        return viewModel.sectionTitles[section]
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

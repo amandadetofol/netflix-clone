@@ -11,7 +11,13 @@ struct Constants {
     static let DISCOVER: String  = "http://api.themoviedb.org/3/discover/movie?api_key=4d32df8357f588e1d75c7308b0eaf4a2&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate"
 }
 
-class ApiCaller {
+protocol ApiProtocol {
+    func getItems(items: String,  completion:  @escaping(MovieData?, Error?) -> Void)
+    func getDiscoverMovies(completion:  @escaping(SearchModel?, Error?) -> Void)
+    func searchFor(movie: String, completion:  @escaping(SearchModel?, Error?) -> Void)
+}
+
+class ApiCaller: ApiProtocol {
     
     static let shared = ApiCaller()
     
