@@ -1,5 +1,9 @@
 import UIKit
 
+protocol CollectionViewTableViewCellDelegate {
+    func handlePosterTap(_ cell: CollectionViewTableViewCell, viewModel: TitlePreviewViewModel)
+}
+
 class CollectionViewTableViewCell: UITableViewCell {
     
     static let identifier = "CollectionViewTableViewCell"
@@ -15,6 +19,8 @@ class CollectionViewTableViewCell: UITableViewCell {
         collectionView.register(TitleCollectionViewCell.self, forCellWithReuseIdentifier: TitleCollectionViewCell.identifier)
         return collectionView
     }()
+    
+    var delegate: CollectionViewTableViewCellDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -63,5 +69,18 @@ extension CollectionViewTableViewCell: UICollectionViewDataSource {
 }
 
 extension CollectionViewTableViewCell: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let titleName = movieData[indexPath.row].originalTitle ?? "Ops! Something wrong occurred!"
+        
+        ApiCaller.shared.getTrailerFor(movie: titleName) { result, error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+            self.delegate?.handlePosterTap(self, viewModel: TitlePreviewViewModel(title: titleName,
+                                                                             videoId: result?.items[0].id.videoID ?? "qN4ooNx77u0"))
+        }
+    }
 }

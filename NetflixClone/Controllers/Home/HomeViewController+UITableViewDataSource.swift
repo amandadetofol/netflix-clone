@@ -13,7 +13,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else { return UITableViewCell() }
-       
+        cell.delegate = self
         switch indexPath.section {
         
         case Sections.TrendingMovies.rawValue:
@@ -54,6 +54,19 @@ extension HomeViewController: UITableViewDataSource {
         header.textLabel?.font  = .boldSystemFont(ofSize: 18)
         header.textLabel?.textColor = .white
         header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20 , y: header.bounds.origin.y, width: 100, height: header.bounds.height)
+    }
+    
+}
+
+extension HomeViewController: CollectionViewTableViewCellDelegate {
+    
+    func handlePosterTap(_ cell: CollectionViewTableViewCell, viewModel: TitlePreviewViewModel) {
+        DispatchQueue.main.async {
+            let titlePreviewController = TitlePreviewViewController()
+            titlePreviewController.configure(title: viewModel)
+            self.navigationController?.pushViewController(titlePreviewController, animated: true)
+        }
+        
     }
     
 }
