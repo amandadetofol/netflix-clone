@@ -39,6 +39,7 @@
 		A6D7CBE42821EE71000B7030 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7CBE32821EE71000B7030 /* SearchViewModel.swift */; };
 		A6D7CBE62821EE80000B7030 /* DownloadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7CBE52821EE80000B7030 /* DownloadsViewModel.swift */; };
 		A6D7CBE82821EE8B000B7030 /* UpcomingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7CBE72821EE8B000B7030 /* UpcomingViewModel.swift */; };
+		A6D7CBEA28229A9E000B7030 /* YoutubeVideoResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D7CBE928229A9E000B7030 /* YoutubeVideoResponseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		A6D7CBE32821EE71000B7030 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		A6D7CBE52821EE80000B7030 /* DownloadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewModel.swift; sourceTree = "<group>"; };
 		A6D7CBE72821EE8B000B7030 /* UpcomingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewModel.swift; sourceTree = "<group>"; };
+		A6D7CBE928229A9E000B7030 /* YoutubeVideoResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideoResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			children = (
 				6E89254D281ACA560023A1F7 /* GenericModel.swift */,
 				A6AE51762820749A00E58A07 /* SearchModel.swift */,
+				A6D7CBE928229A9E000B7030 /* YoutubeVideoResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				A6AE518428207EF300E58A07 /* SearchResultsViewController+UICollectionViewDelegate.swift in Sources */,
 				A6AE517E282076CA00E58A07 /* SearchViewController+UITableViewDelegate.swift in Sources */,
 				6E892554281B01270023A1F7 /* TitleCollectionViewCell.swift in Sources */,
+				A6D7CBEA28229A9E000B7030 /* YoutubeVideoResponseModel.swift in Sources */,
 				6E9DF6202819AB02007BED7A /* DownloadsViewController.swift in Sources */,
 				A634343F2820137900A24E30 /* UpcomingViewController+UITableViewDataSource.swift in Sources */,
 				6E9DF6242819B03A007BED7A /* HomeViewController+UITableViewDataSource.swift in Sources */,

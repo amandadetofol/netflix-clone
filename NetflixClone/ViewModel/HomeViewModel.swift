@@ -9,7 +9,7 @@ class HomeViewModel {
     
     let sectionTitles: [String] = ["Trending Movies","Popular","Upcoming Movies","Top rated"]
     
-    private var api: ApiProtocol
+    var api: ApiProtocol
     private var viewController: HomeViewController
    
     
@@ -26,9 +26,6 @@ class HomeViewModel {
             }
             guard let data = data?.results else { return }
             self.movies = data
-            DispatchQueue.main.async {
-                self.viewController.homeFeedTable.reloadData()
-            }
         }
     }
     
